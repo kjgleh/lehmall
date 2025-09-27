@@ -1,4 +1,4 @@
-package kr.tripstore.settlement.repository
+package org.example.lehmall.order.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
