@@ -12,6 +12,12 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: create-drop
+  rabbitmq:
+    host: localhost
+    port: 55672
+    username: guest
+    password: guest
+
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace

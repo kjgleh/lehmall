@@ -3,8 +3,15 @@ services:
     image: 'mysql:latest'
     environment:
       - 'MYSQL_DATABASE=lehmall'
-      - 'MYSQL_PASSWORD='
-      - 'MYSQL_ROOT_PASSWORD='
-      - 'MYSQL_USER=root'
+      - 'MYSQL_ALLOW_EMPTY_PASSWORD=yes'
     ports:
       - '63306:3306'
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    environment:
+      - 'RABBITMQ_DEFAULT_USER=guest'
+      - 'RABBITMQ_DEFAULT_PASS=guest'
+    ports:
+      - '55672:5672'    # AMQP port
+      - '15672:15672'  # Management UI port
