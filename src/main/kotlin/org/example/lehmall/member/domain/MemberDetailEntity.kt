@@ -4,11 +4,13 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToOne
 
 @Entity(name = "members")
-class MemberEntity(
-    name: String,
+class MemberDetailEntity(
+    member: MemberEntity,
+    introduction: String,
 ) : AuditingDate() {
 
     @Id
@@ -16,11 +18,12 @@ class MemberEntity(
     var id: Long = 0L
         protected set
 
-    var name = name
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    var member: MemberEntity = member
         protected set
 
-    @OneToOne(mappedBy = "member")
-    var detail: MemberDetailEntity? = null
+    var introduction = introduction
         protected set
 
 }
