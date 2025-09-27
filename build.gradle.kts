@@ -26,6 +26,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.3.0")
+    implementation("io.github.oshai:kotlin-logging-jvm:6.0.9")
 
     runtimeOnly("com.mysql:mysql-connector-j")
 
@@ -34,6 +35,7 @@ dependencies {
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("com.h2database:h2")
 
 }
 

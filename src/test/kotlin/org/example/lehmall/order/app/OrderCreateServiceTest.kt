@@ -1,9 +1,10 @@
 @file:Suppress("NonAsciiCharacters")
 
-package org.example.lehmall.order.service
+package org.example.lehmall.order.app
 
 import io.mockk.every
 import org.assertj.core.api.Assertions.assertThat
+import org.example.lehmall.order.app.service.OrderCreateService
 import org.example.lehmall.order.domain.dto.member.MemberDtoFixture
 import org.example.lehmall.order.domain.dto.order.OrderCreateRequestFixture
 import org.example.lehmall.testsupport.SpringBootTestSupport

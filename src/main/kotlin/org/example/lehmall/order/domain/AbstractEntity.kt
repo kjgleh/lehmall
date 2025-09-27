@@ -4,7 +4,6 @@ import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
 import java.time.LocalDateTime
-import org.example.lehmall.order.domain.event.DomainEvent
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.domain.AbstractAggregateRoot
@@ -21,10 +20,5 @@ abstract class AbstractEntity<T : AbstractEntity<T>> : AbstractAggregateRoot<T>(
     @LastModifiedDate
     @Column(nullable = false)
     lateinit var updatedAt: LocalDateTime
-
-    @Suppress("UNCHECKED_CAST")
-    fun raiseEvent(event: DomainEvent): T {
-        return registerEvent(event) as T
-    }
 
 }

@@ -1,8 +1,8 @@
 package org.example.lehmall.order.adapter.internal.member
 
 import org.example.lehmall.member.service.dto.MemberFindResponse
+import org.example.lehmall.order.app.service.MemberFindService
 import org.example.lehmall.order.domain.dto.member.MemberDto
-import org.example.lehmall.order.service.MemberFindService
 import org.springframework.stereotype.Service
 
 @Service
