@@ -8,7 +8,7 @@ data class OrderFindResponse(
 
     companion object {
         fun of(order: OrderEntity): OrderFindResponse {
-            return OrderFindResponse.of(order)
+            return OrderFindResponse(id = order.id)
         }
     }
 }
