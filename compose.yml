@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=lehmall'
+      - 'MYSQL_PASSWORD='
+      - 'MYSQL_ROOT_PASSWORD='
+      - 'MYSQL_USER=root'
+    ports:
+      - '63306:3306'
