@@ -7,7 +7,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToOne
 
-@Entity(name = "members")
+@Entity(name = "member_details")
 class MemberDetailEntity(
     member: MemberEntity,
     introduction: String,
