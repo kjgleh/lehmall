@@ -15,7 +15,7 @@ class OrderItemEntity(
     productId: Long,
     productName: String,
     quantity: Int,
-) : AuditingDate() {
+) : AbstractEntity<OrderItemEntity>() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

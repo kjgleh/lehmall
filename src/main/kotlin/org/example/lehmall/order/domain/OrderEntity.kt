@@ -11,13 +11,14 @@ import java.time.LocalDateTime
 import java.util.*
 import org.example.lehmall.order.domain.dto.member.MemberDto
 import org.example.lehmall.order.domain.dto.order.OrderCreateRequest
+import org.example.lehmall.order.domain.event.OrderCreatedEvent
 
 @Entity(name = "orders")
 class OrderEntity(
     orderNo: String,
     memberId: Long,
     memberName: String,
-) : AuditingDate() {
+) : AbstractEntity<OrderEntity>() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +52,10 @@ class OrderEntity(
                 OrderItemEntity.of(it, order)
             }.toMutableList()
 
-            return order.apply { addItems(items) }
+            return order.apply {
+                addItems(items)
+                raiseOrderCreatedEvent()
+            }
         }
     }
 
@@ -61,6 +65,26 @@ class OrderEntity(
 
     private fun addItems(items: List<OrderItemEntity>) {
         this.items.addAll(items)
+    }
+
+    private fun raiseOrderCreatedEvent() {
+        val totalAmount = calculateTotalAmount()
+        raiseEvent(
+            OrderCreatedEvent(
+                orderId = this.id,
+                orderNo = this.orderNo,
+                memberId = this.memberId,
+                memberName = this.memberName,
+                totalAmount = totalAmount,
+                itemCount = this.items.size
+            )
+        )
+    }
+
+    private fun calculateTotalAmount(): Int {
+        // 실제 금액 계산 로직은 추후 구현 필요
+        // 현재는 임시로 아이템 수 * 10000 으로 계산
+        return items.size * 10000
     }
 
 }

@@ -3,6 +3,7 @@ package org.example.lehmall.order.adapter.internal.member
 import org.example.lehmall.member.service.dto.MemberFindResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 
 @FeignClient(
     name = "MemberClient",
@@ -10,6 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping
 )
 interface MemberClient {
 
-    @GetMapping("/member/find")
-    fun find(memberId: Long): MemberFindResponse
+    @GetMapping("/members/{id}")
+    fun find(@PathVariable id: Long): MemberFindResponse
 }
