@@ -22,7 +22,7 @@ class OrderEntityTest {
         // Assert
         assertThat(sut.canceledAt).isEqualTo(canceledAt)
 
-        val events = sut.domainEventsPublic().toList()
+        val events = sut.domainEventList()
         assertThat(events).hasSize(1)
         val payload = events[0] as OrderCanceledEvent
         assertThat(payload.orderId).isEqualTo(sut.id)

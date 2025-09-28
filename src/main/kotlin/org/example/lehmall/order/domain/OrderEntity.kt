@@ -65,7 +65,7 @@ class OrderEntity(
     }
 
     /** 테스트나 애플리케이션에서 이벤트를 확인할 수 있게 노출 */
-    fun domainEventsPublic(): Collection<Any> = super.domainEvents()
+    fun domainEventList() = super.domainEvents().toList()
 
     private fun addItems(items: List<OrderItemEntity>) {
         this.items.addAll(items)
