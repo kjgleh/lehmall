@@ -43,7 +43,7 @@ class OrderEntity(
         protected set
 
     companion object {
-        fun of(request: OrderReceiveRequest, member: MemberDto): OrderEntity {
+        fun receive(request: OrderReceiveRequest, member: MemberDto): OrderEntity {
             val order = OrderEntity(
                 orderNo = UUID.randomUUID().toString(),
                 memberId = member.id,

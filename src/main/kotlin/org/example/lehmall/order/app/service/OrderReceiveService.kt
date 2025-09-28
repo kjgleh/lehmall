@@ -19,7 +19,7 @@ class OrderReceiveService(
     override fun receive(request: OrderReceiveRequest): OrderReceiveResponse {
         val member = memberFinder.find(request.memberId)
         val order = orderRepository.save(
-            OrderEntity.of(request, member)
+            OrderEntity.receive(request, member)
         )
 
         return OrderReceiveResponse.of(order)
