@@ -1,6 +1,7 @@
-package org.example.lehmall.order.app.event
+package org.example.lehmall.order.app.service
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.example.lehmall.order.app.service.required.EventProducer
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
 import org.example.lehmall.order.domain.event.OrderCreatedEvent
 import org.springframework.scheduling.annotation.Async
@@ -11,7 +12,7 @@ import org.springframework.transaction.event.TransactionalEventListener
 private val logger = KotlinLogging.logger {}
 
 @Component
-class OrderEventListener(
+class DomainEventListener(
     private val eventProducer: EventProducer,
 ) {
 

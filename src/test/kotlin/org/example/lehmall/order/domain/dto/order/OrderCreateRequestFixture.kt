@@ -6,11 +6,11 @@ object OrderCreateRequestFixture {
 
     fun of(
         memberId: Long = Random.nextLong(1, 100),
-        items: List<OrderCreateRequest.OrderItemDto> = listOf(
+        items: List<OrderReceiveRequest.OrderItemDto> = listOf(
             OrderItemDtoFixture.of()
         ),
-    ): OrderCreateRequest {
-        return OrderCreateRequest(
+    ): OrderReceiveRequest {
+        return OrderReceiveRequest(
             memberId = memberId,
             items = items,
         )
@@ -22,8 +22,8 @@ object OrderCreateRequestFixture {
             productId: Long = Random.nextLong(1, 100),
             productName: String = "테스트 상품",
             quantity: Int = 1,
-        ): OrderCreateRequest.OrderItemDto {
-            return OrderCreateRequest.OrderItemDto(
+        ): OrderReceiveRequest.OrderItemDto {
+            return OrderReceiveRequest.OrderItemDto(
                 productId = productId,
                 productName = productName,
                 quantity = quantity,

@@ -1,6 +1,6 @@
-package org.example.lehmall.order.adapter.internal.event
+package org.example.lehmall.order.adapter.event
 
-import org.example.lehmall.order.app.event.EventProducer
+import org.example.lehmall.order.app.service.required.EventProducer
 import org.example.lehmall.order.domain.event.DomainEvent
 import org.springframework.stereotype.Component
 

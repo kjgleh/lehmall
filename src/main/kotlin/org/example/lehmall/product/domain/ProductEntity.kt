@@ -8,6 +8,7 @@ import jakarta.persistence.Id
 @Entity(name = "products")
 class ProductEntity(
     name: String,
+    quantity: Int,
 ) : AuditingDate() {
 
     @Id
@@ -17,5 +18,12 @@ class ProductEntity(
 
     var name = name
         protected set
+
+    var quantity = quantity
+        protected set
+
+    fun decrease(quantity: Int) {
+        this.quantity = quantity
+    }
 
 }

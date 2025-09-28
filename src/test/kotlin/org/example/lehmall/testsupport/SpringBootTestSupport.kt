@@ -6,7 +6,7 @@ import com.ninjasquad.springmockk.MockkBean
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.example.lehmall.config.TestClockConfig
-import org.example.lehmall.order.app.service.MemberFindService
+import org.example.lehmall.order.app.service.required.MemberFinder
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles
@@ -30,5 +30,5 @@ abstract class SpringBootTestSupport {
 
     // order
     @MockkBean
-    protected lateinit var memberFindService: MemberFindService
+    protected lateinit var memberFinder: MemberFinder
 }

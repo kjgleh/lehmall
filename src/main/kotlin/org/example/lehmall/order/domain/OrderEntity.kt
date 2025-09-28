@@ -10,7 +10,7 @@ import jakarta.persistence.OneToMany
 import java.time.LocalDateTime
 import java.util.*
 import org.example.lehmall.order.domain.dto.member.MemberDto
-import org.example.lehmall.order.domain.dto.order.OrderCreateRequest
+import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
 import org.example.lehmall.order.domain.event.OrderCreatedEvent
 
@@ -43,7 +43,7 @@ class OrderEntity(
         protected set
 
     companion object {
-        fun of(request: OrderCreateRequest, member: MemberDto): OrderEntity {
+        fun of(request: OrderReceiveRequest, member: MemberDto): OrderEntity {
             val order = OrderEntity(
                 orderNo = UUID.randomUUID().toString(),
                 memberId = member.id,

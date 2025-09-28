@@ -1,4 +1,4 @@
-package org.example.lehmall.member.adapter.webapi
+package org.example.lehmall.member.adapter.controller
 
 import org.example.lehmall.member.app.service.MemberFindService
 import org.example.lehmall.member.app.service.dto.MemberFindResponse

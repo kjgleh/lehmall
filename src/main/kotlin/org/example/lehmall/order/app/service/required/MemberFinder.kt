@@ -1,7 +1,9 @@
-package org.example.lehmall.order.app.service
+package org.example.lehmall.order.app.service.required
 
 import org.example.lehmall.order.domain.dto.member.MemberDto
 
-interface MemberFindService {
+interface MemberFinder {
+
     fun find(memberId: Long): MemberDto
+
 }

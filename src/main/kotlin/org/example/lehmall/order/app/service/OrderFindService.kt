@@ -1,7 +1,8 @@
 package org.example.lehmall.order.app.service
 
 import org.example.lehmall.order.app.repository.OrderRepository
-import org.example.lehmall.order.app.service.dto.OrderFindResponse
+import org.example.lehmall.order.app.service.provided.OrderFinder
+import org.example.lehmall.order.app.service.provided.dto.OrderFindResponse
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -10,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = true)
 class OrderFindService(
     private val orderRepository: OrderRepository,
-) {
+) : OrderFinder {
 
-    fun find(id: Long): OrderFindResponse {
+    override fun find(id: Long): OrderFindResponse {
         val order = orderRepository.findByIdOrNull(id)
             ?: error("Order with id $id not found")
 

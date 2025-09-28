@@ -1,7 +1,8 @@
 @file:Suppress("NonAsciiCharacters")
 
-package org.example.lehmall.order.app.service
+package org.example.lehmall.order.app.service.provided
 
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.example.lehmall.order.app.repository.OrderRepository
 import org.example.lehmall.order.app.service.common.ClockProvider
@@ -12,8 +13,8 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.event.ApplicationEvents
 
-class OrderCancelServiceTest @Autowired constructor(
-    private val sut: OrderCancelService,
+class OrderCancelerTest @Autowired constructor(
+    private val sut: OrderCanceler,
     private val clockProvider: ClockProvider,
     private val orderRepository: OrderRepository,
 ) : SpringBootTestSupport() {
@@ -32,9 +33,8 @@ class OrderCancelServiceTest @Autowired constructor(
 
         // 주문취소 이벤트 발행 검증
         val events = applicationEvents.stream(OrderCanceledEvent::class.java).toList()
-        assertThat(events).hasSize(1)
-        assertThat(events[0].orderId).isEqualTo(order.id)
+        Assertions.assertThat(events).hasSize(1)
+        Assertions.assertThat(events[0].orderId).isEqualTo(order.id)
     }
 
 }
-

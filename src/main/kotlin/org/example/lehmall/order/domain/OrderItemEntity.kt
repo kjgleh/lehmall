@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
-import org.example.lehmall.order.domain.dto.order.OrderCreateRequest.OrderItemDto
+import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest.OrderItemDto
 
 @Entity(name = "order_items")
 class OrderItemEntity(

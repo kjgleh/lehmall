@@ -1,4 +1,4 @@
-package org.example.lehmall.order.app.service.dto
+package org.example.lehmall.order.app.service.provided.dto
 
 import org.example.lehmall.order.domain.OrderEntity
 

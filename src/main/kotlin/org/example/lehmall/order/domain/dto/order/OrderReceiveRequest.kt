@@ -1,6 +1,6 @@
 package org.example.lehmall.order.domain.dto.order
 
-data class OrderCreateRequest(
+data class OrderReceiveRequest(
     val memberId: Long,
     val items: List<OrderItemDto>,
 ) {
