@@ -1,4 +1,4 @@
-package org.example.lehmall.order.repository
+package org.example.lehmall.order.app.repository
 
 import org.example.lehmall.order.domain.OrderEntity
 import org.springframework.data.jpa.repository.JpaRepository

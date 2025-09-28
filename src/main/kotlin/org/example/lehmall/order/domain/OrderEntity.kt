@@ -11,6 +11,7 @@ import java.time.LocalDateTime
 import java.util.*
 import org.example.lehmall.order.domain.dto.member.MemberDto
 import org.example.lehmall.order.domain.dto.order.OrderCreateRequest
+import org.example.lehmall.order.domain.event.OrderCanceledEvent
 import org.example.lehmall.order.domain.event.OrderCreatedEvent
 
 @Entity(name = "orders")
@@ -60,6 +61,7 @@ class OrderEntity(
 
     fun cancel(canceledAt: LocalDateTime) {
         this.canceledAt = canceledAt
+        produceOrderCanceledEvent()
     }
 
     private fun addItems(items: List<OrderItemEntity>) {
@@ -69,6 +71,14 @@ class OrderEntity(
     private fun produceOrderCreatedEvent() {
         registerEvent(
             OrderCreatedEvent(
+                orderId = this.id,
+            )
+        )
+    }
+
+    private fun produceOrderCanceledEvent() {
+        registerEvent(
+            OrderCanceledEvent(
                 orderId = this.id,
             )
         )

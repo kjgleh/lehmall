@@ -26,6 +26,7 @@ abstract class SpringBootTestSupport {
         entityManager.clear()
     }
 
+    // order
     @MockkBean
     protected lateinit var memberFindService: MemberFindService
 }

@@ -1,6 +1,6 @@
-package org.example.lehmall.member.service
+package org.example.lehmall.member.app.service
 
-import org.example.lehmall.member.service.dto.MemberFindResponse
+import org.example.lehmall.member.app.service.dto.MemberFindResponse
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

@@ -1,7 +1,7 @@
 package org.example.lehmall.member.adapter.webapi
 
-import org.example.lehmall.member.service.MemberFindService
-import org.example.lehmall.member.service.dto.MemberFindResponse
+import org.example.lehmall.member.app.service.MemberFindService
+import org.example.lehmall.member.app.service.dto.MemberFindResponse
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
