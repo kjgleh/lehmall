@@ -9,7 +9,7 @@ import jakarta.persistence.Id
 class ProductEntity(
     name: String,
     quantity: Int,
-) : AuditingDate() {
+) : AbstractEntity<ProductEntity>() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

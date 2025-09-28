@@ -1,4 +1,4 @@
-package org.example.lehmall.product.app.service.provided.impl
+package org.example.lehmall.product.app.service
 
 import org.example.lehmall.common.RepositoryExtensions.findByIdOrThrow
 import org.example.lehmall.product.app.repository.ProductRepository
