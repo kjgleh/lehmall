@@ -3,7 +3,7 @@ package org.example.lehmall.order.app.service
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.example.lehmall.order.app.service.required.EventProducer
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
-import org.example.lehmall.order.domain.event.OrderCreatedEvent
+import org.example.lehmall.order.domain.event.OrderReceivedEvent
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
 import org.springframework.transaction.event.TransactionPhase
@@ -18,8 +18,8 @@ class DomainEventListener(
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     @Async
-    fun handleOrderCreatedEvent(event: OrderCreatedEvent) {
-        logger.info { "주문생성 이벤트 수신: $event" }
+    fun handleOrderCreatedEvent(event: OrderReceivedEvent) {
+        logger.info { "주문접수 이벤트 수신: $event" }
         eventProducer.produce(event)
     }
 

@@ -12,7 +12,7 @@ import java.util.*
 import org.example.lehmall.order.domain.dto.member.MemberDto
 import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
-import org.example.lehmall.order.domain.event.OrderCreatedEvent
+import org.example.lehmall.order.domain.event.OrderReceivedEvent
 
 @Entity(name = "orders")
 class OrderEntity(
@@ -55,7 +55,7 @@ class OrderEntity(
 
             return order
                 .apply { addItems(items) }
-                .also { it.produceOrderCreatedEvent() }
+                .also { it.produceOrderReceivedEvent() }
         }
     }
 
@@ -71,9 +71,9 @@ class OrderEntity(
         this.items.addAll(items)
     }
 
-    private fun produceOrderCreatedEvent() {
+    private fun produceOrderReceivedEvent() {
         registerEvent(
-            OrderCreatedEvent(
+            OrderReceivedEvent(
                 orderId = this.id,
             )
         )

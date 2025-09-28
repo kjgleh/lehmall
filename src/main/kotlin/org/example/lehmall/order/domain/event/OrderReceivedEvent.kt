@@ -1,5 +1,5 @@
 package org.example.lehmall.order.domain.event
 
-data class OrderCreatedEvent(
+data class OrderReceivedEvent(
     val orderId: Long,
 ) : DomainEvent
