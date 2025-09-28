@@ -1,4 +1,4 @@
-package org.example.lehmall.order.config
+package org.example.lehmall.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
@@ -7,4 +7,4 @@ import org.springframework.scheduling.annotation.EnableAsync
 @Configuration
 @EnableJpaAuditing
 @EnableAsync
-class LehmallConfiguration
+class LehmallConfig
