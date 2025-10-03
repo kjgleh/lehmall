@@ -3,14 +3,13 @@
 package org.example.lehmall.order.app.repository
 
 import org.example.lehmall.order.domain.OrderEntityFixture
+import org.example.lehmall.testsupport.DataJpaTestSupport
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
-@DataJpaTest
 class OrderRepositoryTest @Autowired constructor(
     private val orderRepository: OrderRepository,
-) {
+) : DataJpaTestSupport() {
 
     @Test
     fun `주문을 생성한다`() {
