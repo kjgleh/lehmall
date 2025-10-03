@@ -9,8 +9,9 @@ import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import java.time.LocalDateTime
 import java.util.*
+import org.example.lehmall.order.domain.dto.OrderModifyRequest
+import org.example.lehmall.order.domain.dto.OrderReceiveRequest
 import org.example.lehmall.order.domain.dto.member.MemberDto
-import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
 import org.example.lehmall.order.domain.event.OrderReceivedEvent
 
@@ -19,6 +20,7 @@ class OrderEntity(
     orderNo: String,
     memberId: Long,
     memberName: String,
+    orderer: Orderer,
 ) : AbstractEntity<OrderEntity>() {
 
     @Id
@@ -35,6 +37,9 @@ class OrderEntity(
     var memberName = memberName
         protected set
 
+    var orderer = orderer
+        protected set
+
     @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL], mappedBy = "order")
     var items = mutableListOf<OrderItemEntity>()
         protected set
@@ -48,6 +53,7 @@ class OrderEntity(
                 orderNo = UUID.randomUUID().toString(),
                 memberId = member.id,
                 memberName = member.name,
+                orderer = Orderer.of(request.orderer)
             )
             val items = request.items.map {
                 OrderItemEntity.of(it, order)
@@ -59,12 +65,18 @@ class OrderEntity(
         }
     }
 
+    fun modify(request: OrderModifyRequest) {
+        orderer.modify(request.orderer)
+    }
+
     fun cancel(canceledAt: LocalDateTime) {
         this.canceledAt = canceledAt
         produceOrderCanceledEvent()
     }
 
-    /** 테스트나 애플리케이션에서 이벤트를 확인할 수 있게 노출 */
+    /**
+     * 테스트나 애플리케이션에서 이벤트를 확인할 수 있게 노출
+     */
     fun domainEventList() = super.domainEvents().toList()
 
     private fun addItems(items: List<OrderItemEntity>) {

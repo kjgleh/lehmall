@@ -5,7 +5,7 @@ import org.example.lehmall.order.app.service.provided.OrderReceiver
 import org.example.lehmall.order.app.service.provided.dto.OrderReceiveResponse
 import org.example.lehmall.order.app.service.required.MemberFinder
 import org.example.lehmall.order.domain.OrderEntity
-import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest
+import org.example.lehmall.order.domain.dto.OrderReceiveRequest
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

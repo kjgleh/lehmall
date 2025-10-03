@@ -6,7 +6,7 @@ import org.example.lehmall.order.app.service.provided.OrderReceiver
 import org.example.lehmall.order.app.service.provided.dto.OrderCancelResponse
 import org.example.lehmall.order.app.service.provided.dto.OrderFindResponse
 import org.example.lehmall.order.app.service.provided.dto.OrderReceiveResponse
-import org.example.lehmall.order.domain.dto.order.OrderReceiveRequest
+import org.example.lehmall.order.domain.dto.OrderReceiveRequest
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
