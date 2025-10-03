@@ -3,7 +3,6 @@
 package org.example.lehmall.order.domain
 
 import java.time.LocalDateTime
-import kotlin.random.Random
 import org.assertj.core.api.Assertions.assertThat
 import org.example.lehmall.order.domain.dto.OrderModifyRequestFixture
 import org.example.lehmall.order.domain.event.OrderCanceledEvent
@@ -14,7 +13,7 @@ class OrderEntityTest {
     @Test
     fun `주문을 취소하고 이벤트를 발행한다`() {
         // Arrange
-        val sut = OrderEntityFixture.of(id = Random.nextLong(1, 100))
+        val sut = OrderEntityFixture.of()
         val canceledAt = LocalDateTime.of(2025, 9, 28, 16, 0)
 
         // Act
@@ -34,7 +33,6 @@ class OrderEntityTest {
         // Arrange
         val previousOrderer = OrderEntityFixture.OrdererFixture.of()
         val sut = OrderEntityFixture.of(
-            id = Random.nextLong(1, 100),
             orderer = previousOrderer
         )
         val newOrderer = OrderModifyRequestFixture.OrdererFixture.of()
