@@ -37,17 +37,19 @@ class OrderEntityTest {
             id = Random.nextLong(1, 100),
             orderer = previousOrderer
         )
-        val request = OrderModifyRequestFixture.of()
+        val newOrderer = OrderModifyRequestFixture.OrdererFixture.of()
+        val request = OrderModifyRequestFixture.of(
+            orderer = newOrderer
+        )
 
         // Act
         sut.modify(request)
 
         // Assert
         assertThat(sut.orderer).isNotEqualTo(previousOrderer)
-        assertThat(sut.orderer.name).isEqualTo(request.orderer.name)
-        assertThat(sut.orderer.phone).isEqualTo(request.orderer.phone)
+        assertThat(sut.orderer.name).isEqualTo(newOrderer.name)
+        assertThat(sut.orderer.phone).isEqualTo(newOrderer.phone)
     }
-
 
 }
 

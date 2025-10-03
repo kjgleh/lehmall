@@ -14,9 +14,18 @@ data class Orderer(
     val phone: String,
 ) {
 
-    fun modify(orderer: OrderModifyRequest.Orderer?) {
-    }
+    fun changedBy(orderer: OrderModifyRequest.Orderer?): Orderer {
+        if (orderer == null) {
+            return this
+        }
 
+        return orderer.let {
+            copy(
+                name = it.name ?: this.name,
+                phone = it.phone ?: this.phone
+            )
+        }
+    }
 
     companion object {
         fun of(orderer: OrderReceiveRequest.Orderer): Orderer {

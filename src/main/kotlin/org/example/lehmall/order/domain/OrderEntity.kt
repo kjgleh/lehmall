@@ -66,7 +66,7 @@ class OrderEntity(
     }
 
     fun modify(request: OrderModifyRequest) {
-        orderer.modify(request.orderer)
+        orderer = orderer.changedBy(request.orderer)
     }
 
     fun cancel(canceledAt: LocalDateTime) {
