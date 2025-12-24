@@ -1,4 +1,4 @@
-package org.example.lehmall.order.domain
+package org.example.lehmall.common
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
