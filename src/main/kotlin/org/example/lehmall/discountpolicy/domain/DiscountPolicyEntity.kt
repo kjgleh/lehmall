@@ -14,7 +14,7 @@ import org.example.lehmall.common.Money
 import org.example.lehmall.common.MoneyConverter
 
 @Entity(name = "discount_policies")
-class DiscountPolicyEntity(
+class DiscountPolicyEntity protected constructor(
     type: DiscountPolicyType,
     amount: Money? = null,
     percent: Double? = null,
@@ -37,20 +37,28 @@ class DiscountPolicyEntity(
         protected set
 
     companion object {
+        fun amount(amount: Money): DiscountPolicyEntity {
+            return DiscountPolicyEntity(
+                type = DiscountPolicyType.AMOUNT,
+                amount = amount,
+            )
+        }
+
+        fun percent(percent: Double): DiscountPolicyEntity {
+            return DiscountPolicyEntity(
+                type = DiscountPolicyType.PERCENT,
+                percent = percent,
+            )
+        }
+
         fun of(discountPolicy: DiscountPolicy): DiscountPolicyEntity {
             return when (discountPolicy) {
                 is AmountDiscountPolicy -> {
-                    DiscountPolicyEntity(
-                        type = discountPolicy.type,
-                        amount = discountPolicy.amount,
-                    )
+                    amount(discountPolicy.amount)
                 }
 
                 is PercentDiscountPolicy -> {
-                    DiscountPolicyEntity(
-                        type = discountPolicy.type,
-                        percent = discountPolicy.percent,
-                    )
+                    percent(discountPolicy.percent)
                 }
             }
         }
