@@ -1,6 +1,12 @@
 package org.example.lehmall.discountpolicy.domain
 
+import org.example.lehmall.common.Money
+
 data class PercentDiscountPolicy(
-    override val type: DiscountPolicyType,
     val percent: Double,
-) : DiscountPolicy
+) : DiscountPolicy() {
+
+    override val type: DiscountPolicyType = DiscountPolicyType.PERCENT
+    override fun calculate(price: Money): Money = price.times((1 - percent / 100))
+
+}

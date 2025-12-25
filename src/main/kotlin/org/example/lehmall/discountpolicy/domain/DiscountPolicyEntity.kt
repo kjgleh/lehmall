@@ -38,7 +38,28 @@ class DiscountPolicyEntity(
 
     companion object {
         fun of(discountPolicy: DiscountPolicy): DiscountPolicyEntity {
+            return when (discountPolicy) {
+                is AmountDiscountPolicy -> {
+                    DiscountPolicyEntity(
+                        type = discountPolicy.type,
+                        amount = discountPolicy.amount,
+                    )
+                }
+
+                is PercentDiscountPolicy -> {
+                    DiscountPolicyEntity(
+                        type = discountPolicy.type,
+                        percent = discountPolicy.percent,
+                    )
+                }
+            }
         }
     }
+
+    fun toDomain(): DiscountPolicy = when (type) {
+        DiscountPolicyType.AMOUNT -> AmountDiscountPolicy(requireNotNull(amount))
+        DiscountPolicyType.PERCENT -> PercentDiscountPolicy(requireNotNull(percent))
+    }
+
 
 }

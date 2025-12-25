@@ -30,12 +30,10 @@ class DiscountPolicyCreateService(
     private fun createDiscountPolicy(request: DiscountPolicyCreateRequest): DiscountPolicy {
         return when (request.type) {
             DiscountPolicyType.AMOUNT -> AmountDiscountPolicy(
-                type = request.type,
                 amount = requireNotNull(request.amount)
             )
 
             DiscountPolicyType.PERCENT -> PercentDiscountPolicy(
-                type = request.type,
                 percent = requireNotNull(request.percent)
             )
         }

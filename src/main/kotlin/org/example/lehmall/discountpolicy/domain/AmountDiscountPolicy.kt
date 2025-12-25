@@ -3,6 +3,9 @@ package org.example.lehmall.discountpolicy.domain
 import org.example.lehmall.common.Money
 
 data class AmountDiscountPolicy(
-    override val type: DiscountPolicyType,
     val amount: Money,
-) : DiscountPolicy
+) : DiscountPolicy() {
+
+    override val type: DiscountPolicyType = DiscountPolicyType.AMOUNT
+    override fun calculate(price: Money): Money = price.minus(amount)
+}
