@@ -9,8 +9,10 @@ import org.example.lehmall.discountpolicy.domain.DiscountPolicyEntity
 import org.example.lehmall.discountpolicy.domain.DiscountPolicyType
 import org.example.lehmall.discountpolicy.domain.PercentDiscountPolicy
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class DiscountPolicyCreateService(
     private val discountPolicyRepository: DiscountPolicyRepository,
 ) : DiscountPolicyCreator {

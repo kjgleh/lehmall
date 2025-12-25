@@ -61,5 +61,4 @@ class DiscountPolicyEntity(
         DiscountPolicyType.PERCENT -> PercentDiscountPolicy(requireNotNull(percent))
     }
 
-
 }
