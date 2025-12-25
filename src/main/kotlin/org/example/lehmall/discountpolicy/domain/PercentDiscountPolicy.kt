@@ -4,7 +4,7 @@ import org.example.lehmall.common.Money
 
 data class PercentDiscountPolicy(
     val percent: Double,
-) : DiscountPolicy() {
+) : DiscountPolicy {
 
     override fun calculate(price: Money): Money = price.times((1 - percent / 100))
 

@@ -4,7 +4,7 @@ import org.example.lehmall.common.Money
 
 data class AmountDiscountPolicy(
     val amount: Money,
-) : DiscountPolicy() {
+) : DiscountPolicy {
 
     override fun calculate(price: Money): Money = price.minus(amount)
 }
