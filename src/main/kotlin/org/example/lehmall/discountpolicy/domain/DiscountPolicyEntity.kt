@@ -37,6 +37,18 @@ class DiscountPolicyEntity protected constructor(
         protected set
 
     companion object {
+        fun of(discountPolicy: DiscountPolicy): DiscountPolicyEntity {
+            return when (discountPolicy) {
+                is AmountDiscountPolicy -> {
+                    amount(discountPolicy.amount)
+                }
+
+                is PercentDiscountPolicy -> {
+                    percent(discountPolicy.percent)
+                }
+            }
+        }
+
         fun amount(amount: Money): DiscountPolicyEntity {
             return DiscountPolicyEntity(
                 type = DiscountPolicyType.AMOUNT,
@@ -49,18 +61,6 @@ class DiscountPolicyEntity protected constructor(
                 type = DiscountPolicyType.PERCENT,
                 percent = percent,
             )
-        }
-
-        fun of(discountPolicy: DiscountPolicy): DiscountPolicyEntity {
-            return when (discountPolicy) {
-                is AmountDiscountPolicy -> {
-                    amount(discountPolicy.amount)
-                }
-
-                is PercentDiscountPolicy -> {
-                    percent(discountPolicy.percent)
-                }
-            }
         }
     }
 
