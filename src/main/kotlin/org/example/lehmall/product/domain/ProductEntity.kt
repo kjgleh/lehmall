@@ -1,3 +1,5 @@
+@file:Suppress("ProtectedInFinal")
+
 package org.example.lehmall.product.domain
 
 import jakarta.persistence.Entity
@@ -22,8 +24,15 @@ class ProductEntity(
     var quantity = quantity
         protected set
 
+    var discountPolicyId: Long? = null
+        protected set
+
     fun decrease(quantity: Int) {
         this.quantity = quantity
+    }
+
+    fun applyDiscount(policyId: Long) {
+        this.discountPolicyId = policyId
     }
 
 }
