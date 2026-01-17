@@ -29,6 +29,7 @@ class DiscountPolicyEntity protected constructor(
     var type: DiscountPolicyType = type
         protected set
 
+    // TODO Money를 embeddable로 변환
     @Convert(converter = MoneyConverter::class)
     var amount: Money? = amount
         protected set
@@ -49,14 +50,14 @@ class DiscountPolicyEntity protected constructor(
             }
         }
 
-        fun amount(amount: Money): DiscountPolicyEntity {
+        private fun amount(amount: Money): DiscountPolicyEntity {
             return DiscountPolicyEntity(
                 type = DiscountPolicyType.AMOUNT,
                 amount = amount,
             )
         }
 
-        fun percent(percent: Double): DiscountPolicyEntity {
+        private fun percent(percent: Double): DiscountPolicyEntity {
             return DiscountPolicyEntity(
                 type = DiscountPolicyType.PERCENT,
                 percent = percent,
